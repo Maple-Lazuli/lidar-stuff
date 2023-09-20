@@ -56,10 +56,6 @@ unordered_set
 Eigen/Geometry
 -
 
-/home/maple-love/CodeProjects/SFND_Lidar_Obstacle_Detection/src/render/render.cpp
-render.h
-/home/maple-love/CodeProjects/SFND_Lidar_Obstacle_Detection/src/render/render.h
-
 /home/maple-love/CodeProjects/SFND_Lidar_Obstacle_Detection/src/render/render.h
 pcl/visualization/pcl_visualizer.h
 -
