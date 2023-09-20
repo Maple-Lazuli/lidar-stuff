@@ -21,7 +21,7 @@ struct Ray
 	// verticalAngle: the angle of direction between xy plane and ray 
 	// 				  for example 0 radians is along xy plane and pi/2 radians is stright up
 	// resoultion: the magnitude of the ray's step, used for ray casting, the smaller the more accurate but the more expensive
-
+	// The measurements are basically azimuth and elevation.
 	Ray(Vect3 setOrigin, double horizontalAngle, double verticalAngle, double setResolution)
 		: origin(setOrigin), resolution(setResolution), direction(resolution*cos(verticalAngle)*cos(horizontalAngle), resolution*cos(verticalAngle)*sin(horizontalAngle),resolution*sin(verticalAngle)),
 		  castPosition(origin), castDistance(0)
