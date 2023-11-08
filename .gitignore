@@ -1,2 +1,5 @@
 build/*
 src/quiz/ransac/build/*
+src/quiz/ransac_3D/build/*
+.vscode/*
+.github/*
