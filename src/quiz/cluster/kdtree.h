@@ -42,9 +42,7 @@ struct KdTree
 		// TODO: Fill in this function to insert a new point into the tree
 		// the function should create a new node and place correctly with in the root 
 
-		uint startingDepth = 0;
-
-		insert_recursive(&root, startingDepth, point, id);
+		insert_recursive(&root, 0, point, id);
 
 	}
 
@@ -92,14 +90,11 @@ struct KdTree
 	{
 		std::vector<int> ids;
 
-		uint startingDepth = 0;
-
-		recursive_search(target, root, startingDepth, distanceTol, ids);
+		recursive_search(target, root, 0, distanceTol, ids);
 
 		return ids;
 	}
 	
-
 };
 
 

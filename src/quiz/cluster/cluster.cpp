@@ -89,7 +89,7 @@ void proximity(int i, const std::vector<std::vector<float>> points, std::vector<
 }
 	
 
-std::vector<std::vector<int>> euclideanCluster(const std::vector<std::vector<float>>& points, KdTree* tree, float distanceTol)
+std::vector<std::vector<int>> euclideanCluster(const std::vector<std::vector<float>> points, KdTree* tree, float distanceTol)
 {
 
 	// TODO: Fill out this function to return list of indices for each cluster
@@ -100,14 +100,14 @@ std::vector<std::vector<int>> euclideanCluster(const std::vector<std::vector<flo
 
 	int i = 0;
 	while (i < points.size()) {
-		if(processed[i]) {
+		if(processed[i])
 			i++;
-		}
+		else{
 		std::vector<int> cluster;
 		proximity(i, points, cluster, processed, tree, distanceTol);
 		clusters.push_back(cluster);
-
 		i++;
+		}
 	}
  
 	return clusters;
@@ -146,7 +146,8 @@ int main ()
   	std::vector<int> nearby = tree->search({-6,7},3.0);
   	for(int index : nearby)
       std::cout << index << ",";
-  	std::cout <<  "\n";
+	std::cout<< std::endl;
+	std::cout << "Here" << std::endl;
   	// Time segmentation process
   	auto startTime = std::chrono::steady_clock::now();
   	//
