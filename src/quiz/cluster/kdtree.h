@@ -49,7 +49,7 @@ struct KdTree
 	void insert_recursive(Node** node, uint depth, std::vector<float> point, int id) {
 
 		// At a null, insert the node.
-		if (*node==NULL)
+		if (!*node)
 			*node = new Node(point, id);
 		else {
 			
@@ -64,7 +64,7 @@ struct KdTree
 
 	void recursive_search(std::vector<float> target, Node* node, uint depth, float distanceTol, std::vector<int>& ids){
 
-		if(node != NULL) {
+		if(node) {
 			bool checkDim0 = (node->point[0]>=(target[0]-distanceTol)) && (node->point[0]<=(target[0]+distanceTol));
 			bool checkDim1 = (node->point[1]>=(target[1]-distanceTol)) && (node->point[1]<=(target[1]+distanceTol));
 
@@ -95,6 +95,7 @@ struct KdTree
 		return ids;
 	}
 	
+
 };
 
 

@@ -76,35 +76,35 @@ void render2DTree(Node* node, pcl::visualization::PCLVisualizer::Ptr& viewer, Bo
 }
 
 
-void proximity(int i, const std::vector<std::vector<float>> points, std::vector<int>& cluster, std::vector<bool>& processed, KdTree* tree, float distanceTol) {
+void proximity(int i, const std::vector<std::vector<float>> points, std::vector<int>& cluster, std::vector<bool>& checked, KdTree* tree, float tolerance) {
 
-	processed[i] = true;
+	checked[i] = true;
 	cluster.push_back(i);
 
-	std::vector<int> nearest = tree->search(points[i],distanceTol);
+	std::vector<int> neighbors = tree->search(points[i],tolerance);
 
-	for(int id : nearest)
-		if(!processed[id])
-			proximity(id, points, cluster, processed, tree, distanceTol);
+	for(int id : neighbors)
+		if(!checked[id])
+			proximity(id, points, cluster, checked, tree, tolerance);
 }
 	
 
-std::vector<std::vector<int>> euclideanCluster(const std::vector<std::vector<float>> points, KdTree* tree, float distanceTol)
+std::vector<std::vector<int>> euclideanCluster(const std::vector<std::vector<float>> points, KdTree* tree, float tolerance)
 {
 
 	// TODO: Fill out this function to return list of indices for each cluster
 
 	std::vector<std::vector<int>> clusters;
 
-	std::vector<bool> processed(points.size(), false); //array of booleans to keep track of processing
+	std::vector<bool> checked(points.size(), false); //array of booleans to keep track of processing
 
 	int i = 0;
 	while (i < points.size()) {
-		if(processed[i])
+		if(checked[i])
 			i++;
 		else{
 		std::vector<int> cluster;
-		proximity(i, points, cluster, processed, tree, distanceTol);
+		proximity(i, points, cluster, checked, tree, tolerance);
 		clusters.push_back(cluster);
 		i++;
 		}
